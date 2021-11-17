@@ -1,0 +1,16 @@
+$fz-kurale: 'Kurale',
+serif;
+$fz-os: 'Open Sans',
+sans-serif;
+
+$main-color: #E8C300;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: $fz-os;
+}

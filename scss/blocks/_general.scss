@@ -1,16 +1,83 @@
-$fz-kurale: 'Kurale',
+$kurale: 'Kurale',
 serif;
-$fz-os: 'Open Sans',
+$os: 'Open Sans',
 sans-serif;
 
-$main-color: #E8C300;
+$fz: 18px;
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+$yellow: #E8C300;
+$white: #fff;
+$black: #000;
+$white-opacity: rgba(255, 255, 255, 0.5);
+$wrap: 1440px;
+$container: 1230px;
+
+@mixin flex($jc, $ai) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin line {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    background: $yellow;
+    border-radius: 50px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 35px;
 }
 
 body {
-    font-size: $fz-os;
+    background: $white;
+    font-family: $os;
+    color: $black;
+    font-size: $fz;
+}
+
+.wrapper {
+    max-width: $wrap;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: $container;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+.circle {
+    width: 250px;
+    height: 250px;
+    border: 20px solid $yellow;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+}
+
+section h2 {
+    font-weight: 400;
+    font-size: 42px;
+    font-family: $kurale;
+
+    &::after {
+        @include line;
+    }
+}
+
+section p {
+    line-height: 175%;
+    margin-bottom: 25px;
+}
+
+.intro {
+    font-weight: 700;
 }

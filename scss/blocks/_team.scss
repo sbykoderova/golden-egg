@@ -1,6 +1,6 @@
 .team {
     background: url(../../img/bg-team.jpg) center/cover no-repeat;
-    padding: 40px 0 100px 0;
+    padding: 45px 0 100px 0;
 
     h6 {
         text-align: center;
@@ -13,7 +13,7 @@
 
 .team__container {
     @include flex(space-between, center);
-    margin-top: 60px;
+    margin-top: 45px;
 }
 
 .team__text {
@@ -27,10 +27,11 @@
     width: 50%;
     max-width: 570px;
     position: relative;
+    padding-left: 30px;
 
     .circle {
         left: 0;
-        transform: translate(-35%, -50%);
+        transform: translate(-30%, -50%);
     }
 
     img {

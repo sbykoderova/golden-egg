@@ -1,4 +1,4 @@
-.swiper {
+.swiper-container {
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -9,7 +9,7 @@
     z-index: 1;
 }
 
-.swiper-vertical>.swiper-wrapper {
+.swiper-container-vertical>.swiper-wrapper {
     flex-direction: column;
 }
 
@@ -23,15 +23,29 @@
     box-sizing: content-box;
 }
 
-.swiper-android .swiper-slide,
+.swiper-container-android .swiper-slide,
 .swiper-wrapper {
     transform: translate3d(0px, 0, 0);
 }
 
-.swiper-pointer-events {
+.swiper-container-multirow>.swiper-wrapper {
+    flex-wrap: wrap;
+}
+
+.swiper-container-multirow-column>.swiper-wrapper {
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.swiper-container-free-mode>.swiper-wrapper {
+    transition-timing-function: ease-out;
+    margin: 0 auto;
+}
+
+.swiper-container-pointer-events {
     touch-action: pan-y;
 
-    &.swiper-vertical {
+    &.swiper-container-vertical {
         touch-action: pan-x;
     }
 }
@@ -49,7 +63,7 @@
 }
 
 /* Auto Height */
-.swiper-autoheight {
+.swiper-container-autoheight {
 
     &,
     .swiper-slide {
@@ -63,16 +77,11 @@
 }
 
 /* 3D Effects */
-.swiper-3d {
-
-    &,
-    &.swiper-css-mode .swiper-wrapper {
-        perspective: 1200px;
-    }
+.swiper-container-3d {
+    perspective: 1200px;
 
     .swiper-wrapper,
     .swiper-slide,
-    .swiper-slide-shadow,
     .swiper-slide-shadow-left,
     .swiper-slide-shadow-right,
     .swiper-slide-shadow-top,
@@ -81,7 +90,6 @@
         transform-style: preserve-3d;
     }
 
-    .swiper-slide-shadow,
     .swiper-slide-shadow-left,
     .swiper-slide-shadow-right,
     .swiper-slide-shadow-top,
@@ -95,29 +103,33 @@
         z-index: 10;
     }
 
-    .swiper-slide-shadow {
-        background: rgba(0, 0, 0, 0.15);
-    }
-
     .swiper-slide-shadow-left {
-        background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+        background-image: linear-gradient(to left,
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0));
     }
 
     .swiper-slide-shadow-right {
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+        background-image: linear-gradient(to right,
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0));
     }
 
     .swiper-slide-shadow-top {
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+        background-image: linear-gradient(to top,
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0));
     }
 
     .swiper-slide-shadow-bottom {
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+        background-image: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0));
     }
 }
 
 /* CSS Mode */
-.swiper-css-mode {
+.swiper-container-css-mode {
     >.swiper-wrapper {
         overflow: auto;
         scrollbar-width: none;
@@ -135,48 +147,14 @@
     }
 }
 
-.swiper-horizontal.swiper-css-mode {
+.swiper-container-horizontal.swiper-container-css-mode {
     >.swiper-wrapper {
         scroll-snap-type: x mandatory;
     }
 }
 
-.swiper-vertical.swiper-css-mode {
+.swiper-container-vertical.swiper-container-css-mode {
     >.swiper-wrapper {
         scroll-snap-type: y mandatory;
-    }
-}
-
-.swiper-centered {
-    >.swiper-wrapper::before {
-        content: '';
-        flex-shrink: 0;
-        order: 9999;
-    }
-
-    &.swiper-horizontal {
-        >.swiper-wrapper>.swiper-slide:first-child {
-            margin-inline-start: var(--swiper-centered-offset-before);
-        }
-
-        >.swiper-wrapper::before {
-            height: 100%;
-            width: var(--swiper-centered-offset-after);
-        }
-    }
-
-    &.swiper-vertical {
-        >.swiper-wrapper>.swiper-slide:first-child {
-            margin-block-start: var(--swiper-centered-offset-before);
-        }
-
-        >.swiper-wrapper::before {
-            width: 100%;
-            height: var(--swiper-centered-offset-after);
-        }
-    }
-
-    >.swiper-wrapper>.swiper-slide {
-        scroll-snap-align: center center;
     }
 }
